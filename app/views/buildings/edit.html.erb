@@ -1,2 +1,45 @@
-<h1>Buildings#edit</h1>
-<p>Find me in app/views/buildings/edit.html.erb</p>
+<h1>物件編集</h1>
+
+<%=form_for @building do |f|%>
+  <div class="form-group">
+    <%= f.label :物件名 %>
+    <%= f.text_field :name %>
+  </div>
+  <div class="form-group">
+    <%= f.label :賃料 %>
+    <%= f.number_field :rent %>円
+  </div>
+
+  <div class="form-group">
+    <%= f.label :住所 %>
+    <%= f.text_field :address %>
+  </div>
+  <div class="form-group">
+    <%= f.label :築年数 %>
+    <%= f.number_field :age %>年
+  </div>
+
+  <div class="form-group">
+    <%= f.label :備考 %>
+    <%= f.text_area :remarks %>
+  </div>
+
+  <%= f.fields_for :stations do |s|%>
+    <%= "最寄駅#{ s.index + 1}"%>
+    <div class="form-group">
+      <%= s.label :路線名 %>
+      <%= s.text_field :route_name %>
+    </div>
+    <div class="form-group">
+      <%= s.label :駅名 %>
+      <%= s.text_field :name %>
+    </div>
+    <div class="form-group">
+      <%= s.label :徒歩分数 %>
+      <%= s.number_field :minutes_walk %>
+    </div>
+  <%end%>
+  <div class="form-group">
+    <%= f.submit '更新する'%>
+  </div>
+<%end%>

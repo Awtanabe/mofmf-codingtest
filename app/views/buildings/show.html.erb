@@ -1,0 +1,15 @@
+
+
+<p>物件名: <%=@building.name%></p>
+<p>賃料: <%=@building.rent.to_s(:delimited)%>円</p>
+<p>住所: <%=@building.age%>年</p>
+<p>備考: <%=@building.remarks%></p>
+
+
+<% @building.stations.each_with_index do |station, index|%>
+  <h3>最寄駅<%= index + 1%></h3>
+  <p>路線名: <%= station.route_name %></p>
+  <p>駅名: <%= station.name %></p>
+  <p>徒歩分数: <%= station.minutes_walk %></p>
+
+<% end %>

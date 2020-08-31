@@ -1,2 +1,27 @@
-<h1>Buildings#index</h1>
-<p>Find me in app/views/buildings/index.html.erb</p>
+<h1>物件一覧</h1>
+<table>
+  <tr>
+   <th>物件名</th> 
+   <th>賃料</th>
+   <th>住所</th>
+   <th>築年数</th>
+   <th>備考</th>
+   <th></th>
+   <th></th>
+   <th></th>
+  </tr>
+  <% @buildings.each do |building|%>
+   <tr>
+     <th><%=building.name%></th>
+     <th><%=building.rent.to_s(:delimited)%></th>
+     <th><%=building.address%></th>
+     <th><%=building.age%></th>
+     <th><%=building.remarks%></th>
+     <th><%=link_to '詳細', building_path(building)%></th>
+     <th><%=link_to '編集', edit_building_path(building)%></th>
+     <th><%=link_to '削除', building_path(building), method: :delete%></th>
+   </tr>
+  <%end%>
+</table>
+
+<%= link_to "物件を登録する", new_building_path%>
