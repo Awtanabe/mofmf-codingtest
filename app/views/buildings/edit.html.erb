@@ -1,45 +1,49 @@
-<h1>物件編集</h1>
+<div class="container">
+  <h1>物件編集</h1>
 
-<%=form_for @building do |f|%>
-  <div class="form-group">
-    <%= f.label :物件名 %>
-    <%= f.text_field :name %>
-  </div>
-  <div class="form-group">
-    <%= f.label :賃料 %>
-    <%= f.number_field :rent %>円
-  </div>
-
-  <div class="form-group">
-    <%= f.label :住所 %>
-    <%= f.text_field :address %>
-  </div>
-  <div class="form-group">
-    <%= f.label :築年数 %>
-    <%= f.number_field :age %>年
-  </div>
-
-  <div class="form-group">
-    <%= f.label :備考 %>
-    <%= f.text_area :remarks %>
-  </div>
-
-  <%= f.fields_for :stations do |s|%>
-    <%= "最寄駅#{ s.index + 1}"%>
+  <%=form_for @building do |f|%>
     <div class="form-group">
-      <%= s.label :路線名 %>
-      <%= s.text_field :route_name %>
+      <%= f.label :物件名 %>
+      <%= f.text_field :name %>
     </div>
     <div class="form-group">
-      <%= s.label :駅名 %>
-      <%= s.text_field :name %>
+      <%= f.label :賃料 %>
+      <%= f.number_field :rent %>円
+    </div>
+
+    <div class="form-group">
+      <%= f.label :住所 %>
+      <%= f.text_field :address %>
     </div>
     <div class="form-group">
-      <%= s.label :徒歩分数 %>
-      <%= s.number_field :minutes_walk %>
+      <%= f.label :築年数 %>
+      <%= f.number_field :age %>年
+    </div>
+
+    <div class="form-group">
+      <%= f.label :備考 %>
+      <%= f.text_area :remarks %>
+    </div>
+
+    <%= f.fields_for :stations do |s|%>
+      <%= "最寄駅#{ s.index + 1}"%>
+      <div class="form-group">
+        <%= s.label :路線名 %>
+        <%= s.text_field :route_name %>
+      </div>
+      <div class="form-group">
+        <%= s.label :駅名 %>
+        <%= s.text_field :name %>
+      </div>
+      <div class="form-group">
+        <%= s.label :徒歩分数 %>
+        <%= s.number_field :minutes_walk %>
+      </div>
+    <%end%>
+    <div class="form-group">
+      <%= f.submit '更新する'%>
     </div>
   <%end%>
-  <div class="form-group">
-    <%= f.submit '更新する'%>
-  </div>
-<%end%>
+  <%= link_to '詳細', building_path(@building)%>
+  <%= link_to '戻る', buildings_path%>
+</div>

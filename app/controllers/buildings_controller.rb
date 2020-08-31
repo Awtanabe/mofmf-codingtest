@@ -1,4 +1,6 @@
 class BuildingsController < ApplicationController
+  before_action :set_building, only: %w[show edit update destroy]
+
   def index
     @buildings = Building.all
   end
@@ -9,7 +11,6 @@ class BuildingsController < ApplicationController
   end
 
   def show
-    @building = Building.find(params[:id])    
   end
 
   def create
@@ -22,12 +23,9 @@ class BuildingsController < ApplicationController
   end
 
   def edit
-    @building = Building.find(params[:id])
   end
 
   def update
-    @building = Building.find(params[:id])
-
     if @building.update(building_params)
       redirect_to root_path
     else
@@ -36,7 +34,6 @@ class BuildingsController < ApplicationController
   end
 
   def destroy
-    @building = Building.find(params[:id])
     @building.destroy
     redirect_to root_path
   end
@@ -45,5 +42,9 @@ class BuildingsController < ApplicationController
 
   def building_params
     params.require(:building).permit(:name, :rent, :address, :age, :remarks, stations_attributes: [:id, :name, :route_name,:minutes_walk, :_destroy])
+  end
+
+  def set_building
+    @building = Building.find(params[:id])
   end
 end
