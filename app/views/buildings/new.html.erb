@@ -1,61 +1,85 @@
-<h1>物件登録画面</h1>
+<div class="container">
+  <h1>物件登録画面</h1>
 
-<%=form_for @building do |f|%>
-  <div class="form-group">
-    <%= f.label :物件名 %>
-    <%= f.text_field :name %>
-  </div>
-  <div class="form-group">
-    <%= f.label :賃料 %>
-    <%= f.number_field :rent %>円
-  </div>
-
-  <div class="form-group">
-    <%= f.label :住所 %>
-    <%= f.text_field :address %>
-  </div>
-  <div class="form-group">
-    <%= f.label :築年数 %>
-    <%= f.number_field :age %>年
-  </div>
-
-  <div class="form-group">
-    <%= f.label :備考 %>
-    <%= f.text_area :remarks %>
-  </div>
-
-最寄駅1
-  <%= f.fields_for :stations do |s|%>
+  <%=form_for @building do |f|%>
     <div class="form-group">
-      <%= s.label :路線名 %>
-      <%= s.text_field :route_name %>
+      <%= f.label :物件名 %>
+      <div class="form-field">
+        <%= f.text_field :name %>
+      </div>
     </div>
     <div class="form-group">
-      <%= s.label :駅名 %>
-      <%= s.text_field :name %>
+      <%= f.label :賃料 %>
+      <div class="form-field">
+        <%= f.number_field :rent %>円
+      </div>
     </div>
     <div class="form-group">
-      <%= s.label :徒歩分数 %>
-      <%= s.number_field :minutes_walk %>
+      <%= f.label :住所 %>
+      <div class="form-field">
+        <%= f.text_field :address %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label :築年数 %>
+      <div class="form-field">
+        <%= f.number_field :age %>年
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label :備考 %>
+      <div class="form-field">
+        <%= f.text_area :remarks %>
+      </div>
+    </div>
+
+    <div class="line"></div>
+
+    <h3>最寄駅1</h3>
+    <%= f.fields_for :stations do |s|%>
+      <div class="form-group">
+        <%= s.label :路線名 %>
+        <div class="form-field">
+          <%= s.text_field :route_name %>
+        </div>
+      </div>
+      <div class="form-group">
+        <%= s.label :駅名 %>
+        <div class="form-field">
+          <%= s.text_field :name %>
+        </div>
+      </div>
+      <div class="form-group">
+        <%= s.label :徒歩分数 %>
+        <div class="form-field">
+          <%= s.number_field :minutes_walk %>
+        </div>
+      </div>
+    <%end%>
+
+    <h3>最寄駅2</h3>
+    <%= f.fields_for :stations do |s|%>
+      <div class="form-group">
+        <%= s.label :路線名 %>
+        <div class="form-field">
+          <%= s.text_field :route_name %>
+        </div>
+      </div>
+      <div class="form-group">
+        <%= s.label :駅名 %>
+        <div class="form-field">
+          <%= s.text_field :name %>
+        </div>
+      </div>
+      <div class="form-group">
+        <%= s.label :徒歩分数 %>
+        <div class="form-field">
+          <%= s.number_field :minutes_walk %>
+        </div>
+      </div>
+    <%end%>
+    <div class="form-group">
+      <%= f.submit '登録する'%>
     </div>
   <%end%>
-
-最寄駅2
-  <%= f.fields_for :stations do |s|%>
-    <div class="form-group">
-      <%= s.label :路線名 %>
-      <%= s.text_field :route_name %>
-     </div>
-    <div class="form-group">
-      <%= s.label :駅名 %>
-      <%= s.text_field :name %>
-     </div>
-    <div class="form-group">
-      <%= s.label :徒歩分数 %>
-      <%= s.number_field :minutes_walk %>
-    </div>
-  <%end%>
-  <div class="form-group">
-    <%= f.submit '登録する'%>
-  </div>
-<%end%>
+</div>

@@ -12,16 +12,16 @@
     <th></th>
     </tr>
     <% @buildings.each do |building|%>
-    <tr>
-      <td><%=building.name%></td>
-      <td><%=building.rent.to_s(:delimited)%></td>
-      <td><%=building.address%></td>
-      <td><%=building.age%></td>
-      <td><%=building.remarks%></td>
-      <td><%=link_to '詳細', building_path(building)%></td>
-      <td><%=link_to '編集', edit_building_path(building)%></td>
-      <td><%=link_to '削除', building_path(building), method: :delete%></td>
-    </tr>
+      <tr>
+        <td><%=building.name%></td>
+        <td><%=building.rent.to_s(:delimited)%>円</td>
+        <td><%=building.address%></td>
+        <td><%=building.age%>年</td>
+        <td><%=building.remarks%></td>
+        <td><%=link_to '詳細', building_path(building)%></td>
+        <td><%=link_to '編集', edit_building_path(building)%></td>
+        <td><%=link_to '削除', building_path(building), method: :delete%></td>
+      </tr>
     <%end%>
   </table>
   <%= link_to "物件を登録する", new_building_path%>
