@@ -1,0 +1,65 @@
+<div class="container">
+  <h1>物件編集</h1>
+
+  <%=form_for @building do |f|%>
+    <div class="form-group">
+      <%= f.label :物件名 %>
+      <div class="form-field">
+        <%= f.text_field :name %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label :賃料 %>
+      <div class="form-field">
+        <%= f.number_field :rent %>円
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label :住所 %>
+      <div class="form-field">
+        <%= f.text_field :address %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label :築年数 %>
+      <div class="form-field">
+        <%= f.number_field :age %>年
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label :備考 %>
+      <div class="form-field">
+        <%= f.text_area :remarks %>
+      </div>
+    </div>
+
+    <div class="line"></div>
+
+    <%= f.fields_for :stations do |s|%>
+      <%= "最寄駅#{s.index + 1}"%>
+      <div class="form-group">
+        <%= s.label :路線名 %>
+        <div class="form-field">
+          <%= s.text_field :route_name %>線
+        </div>
+      </div>
+      <div class="form-group">
+        <%= s.label :駅名 %>
+        <div class="form-field">
+          <%= s.text_field :name %>駅
+        </div>
+      </div>
+      <div class="form-group">
+        <%= s.label :徒歩分数 %>
+        <div class="form-field">
+          <%= s.number_field :minutes_walk %>分
+        </div>
+      </div>
+    <%end%>
+    <div class="form-group">
+      <%= f.submit '更新する'%>
+    </div>
+  <%end%>
+  <%= link_to '詳細', building_path(@building)%>
+  <%= link_to '戻る', buildings_path%>
+</div>
